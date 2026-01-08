@@ -17,10 +17,15 @@
 
     <div id="result-box" class="hidden">
         <p id="result"></p>
+        <div style="position: relative; margin: auto; height:500px; width:500px;">
+            <canvas id="resultChart"></canvas>
+        </div>
         <button onclick="restartQuiz()">เริ่มใหม่</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="script.js"></script>
 </body>
 </html>

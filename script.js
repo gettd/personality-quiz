@@ -1,3 +1,5 @@
+Chart.register(ChartDataLabels);
+
 const TYPES = {
   LANGUAGE: "ภาษา",
   LOGIC: "ตรรกะ",
@@ -8,6 +10,17 @@ const TYPES = {
   SELF: "ตนเอง",
   NATURE: "ธรรมชาติ"
 };
+
+const CHART_COLORS = [
+  'rgba(255, 99, 132, 0.6)',  // Red
+  'rgba(54, 162, 235, 0.6)',  // Blue
+  'rgba(255, 206, 86, 0.6)',  // Yellow
+  'rgba(75, 192, 192, 0.6)',  // Green
+  'rgba(153, 102, 255, 0.6)', // Purple
+  'rgba(255, 159, 64, 0.6)',  // Orange
+  'rgba(199, 199, 199, 0.6)', // Grey
+  'rgba(83, 102, 255, 0.6)'   // Indigo
+];
 
 const DESCRIPTIONS = {
   [TYPES.LANGUAGE]: {
@@ -49,40 +62,40 @@ const questions = [
   {
     text: "1. เมื่อครูเริ่มสอนบทเรียนใหม่ที่ยากและซับซ้อน คุณอยากเรียนรู้ด้วยวิธีใด",
     answers: [
+      { text: "นั่งทำความเข้าใจเงียบๆ คนเดียวก่อน แล้วค่อยถาม", type: TYPES.SELF },
+      { text: "เรียนโดยใช้เพลง หรือคำคล้องจองช่วยจำ", type: TYPES.MUSIC },
       { text: "อ่านหนังสือคู่มือหรือเอกสารประกอบการสอนก่อน", type: TYPES.LANGUAGE },
       { text: "ฟังครูอธิบายเหตุผลและลำดับขั้นตอนเป็นข้อๆ", type: TYPES.LOGIC },
+      { text: "เปรียบเทียบเนื้อหากับสิ่งรอบตัวหรือปรากฏการณ์ธรรมชาติ", type: TYPES.NATURE },
       { text: "ดูสไลด์ แผนภาพ หรือวิดีโอประกอบการสอน", type: TYPES.VISUAL },
       { text: "ขอลงมือทดลองทำจริง หรือจับต้องอุปกรณ์", type: TYPES.BODY },
-      { text: "เรียนโดยใช้เพลง หรือคำคล้องจองช่วยจำ", type: TYPES.MUSIC },
-      { text: "จับกลุ่มอภิปรายหรือให้เพื่อนช่วยสอน", type: TYPES.SOCIAL },
-      { text: "นั่งทำความเข้าใจเงียบๆ คนเดียวก่อน แล้วค่อยถาม", type: TYPES.SELF },
-      { text: "เปรียบเทียบเนื้อหากับสิ่งรอบตัวหรือปรากฏการณ์ธรรมชาติ", type: TYPES.NATURE }
+      { text: "จับกลุ่มอภิปรายหรือให้เพื่อนช่วยสอน", type: TYPES.SOCIAL }
     ]
   },
   {
     text: "2. ถ้าต้องจำคำศัพท์ภาษาอังกฤษ 20 คำใน 10 นาที คุณจะใช้วิธีไหน",
     answers: [
       { text: "ท่องออกเสียง หรือคัดคำศัพท์ลงกระดาษซ้ำๆ", type: TYPES.LANGUAGE },
-      { text: "จัดหมวดหมู่คำศัพท์เป็นกลุ่ม หรือหาความสัมพันธ์ของคำ", type: TYPES.LOGIC },
       { text: "วาดรูปประกอบคำศัพท์ หรือใช้สีไฮไลท์ช่วยจำ", type: TYPES.VISUAL },
-      { text: "เขียนคำศัพท์กลางอากาศ หรือเดินไปท่องไป", type: TYPES.BODY },
-      { text: "แต่งเป็นทำนองเพลง หรือเคาะจังหวะตอนท่อง", type: TYPES.MUSIC },
-      { text: "ผลัดกันทายคำศัพท์กับเพื่อน", type: TYPES.SOCIAL },
       { text: "ปิดตาทำสมาธิแล้วนึกทบทวนคำศัพท์ในใจ", type: TYPES.SELF },
+      { text: "แต่งเป็นทำนองเพลง หรือเคาะจังหวะตอนท่อง", type: TYPES.MUSIC },
+      { text: "จัดหมวดหมู่คำศัพท์เป็นกลุ่ม หรือหาความสัมพันธ์ของคำ", type: TYPES.LOGIC },
+      { text: "เขียนคำศัพท์กลางอากาศ หรือเดินไปท่องไป", type: TYPES.BODY },
+      { text: "ผลัดกันทายคำศัพท์กับเพื่อน", type: TYPES.SOCIAL },
       { text: "นึกภาพคำศัพท์นั้นเชื่อมโยงกับสัตว์ พืช หรือสิ่งของจริง", type: TYPES.NATURE }
     ]
   },
   {
     text: "3. คุณได้รับมอบหมายให้ทำรายงานสรุปผลงานตลอดปี คุณจะนำเสนอออกมาในรูปแบบใด",
     answers: [
+      { text: "ทำ Infographic หรือโปสเตอร์สวยงาม", type: TYPES.VISUAL },
       { text: "เขียนเรียงความ หรือบทความบรรยายละเอียด", type: TYPES.LANGUAGE },
       { text: "ทำกราฟ ตารางเปรียบเทียบ และสถิติตัวเลข", type: TYPES.LOGIC },
-      { text: "ทำ Infographic หรือโปสเตอร์สวยงาม", type: TYPES.VISUAL },
+      { text: "ออกไปพรีเซนต์สดหน้าเวที", type: TYPES.SOCIAL },
       { text: "สร้างโมเดลจำลอง หรือจัดนิทรรศการที่หยิบจับได้", type: TYPES.BODY },
       { text: "ทำคลิปวิดีโอที่มีเพลงประกอบ หรือ Podcast", type: TYPES.MUSIC },
-      { text: "ออกไปพรีเซนต์สดหน้าเวที", type: TYPES.SOCIAL },
-      { text: "เขียน Reflection สะท้อนความคิดเห็นส่วนตัว", type: TYPES.SELF },
-      { text: "รายงานผลกระทบต่อสิ่งแวดล้อมหรือสังคม", type: TYPES.NATURE }
+      { text: "รายงานผลกระทบต่อสิ่งแวดล้อมหรือสังคม", type: TYPES.NATURE },
+      { text: "เขียน Reflection สะท้อนความคิดเห็นส่วนตัว", type: TYPES.SELF }
     ]
   },
   {
@@ -101,40 +114,40 @@ const questions = [
   {
     text: "5. เมื่อเจอปัญหาโจทย์เลขหรือปัญหางานที่แก้ไม่ออก คุณเริ่มต้นอย่างไร",
     answers: [
+      { text: "เคาะจังหวะหรือฮัมเพลง", type: TYPES.MUSIC },
+      { text: "หยิบสิ่งของมาจำลองสถานการณ์", type: TYPES.BODY },
       { text: "อ่านโจทย์ซ้ำหลายรอบ", type: TYPES.LANGUAGE },
       { text: "แตกปัญหาเป็นส่วนย่อยๆ", type: TYPES.LOGIC },
-      { text: "วาดแผนภาพหรือ Mind Map", type: TYPES.VISUAL },
-      { text: "หยิบสิ่งของมาจำลองสถานการณ์", type: TYPES.BODY },
-      { text: "เคาะจังหวะหรือฮัมเพลง", type: TYPES.MUSIC },
       { text: "ถามคนอื่นหรือโพสต์ถามกลุ่ม", type: TYPES.SOCIAL },
-      { text: "พักก่อน เชื่อสัญชาตญาณ", type: TYPES.SELF },
-      { text: "เปรียบเทียบกับระบบในธรรมชาติ", type: TYPES.NATURE }
+      { text: "วาดแผนภาพหรือ Mind Map", type: TYPES.VISUAL },
+      { text: "เปรียบเทียบกับระบบในธรรมชาติ", type: TYPES.NATURE },
+      { text: "พักก่อน เชื่อสัญชาตญาณ", type: TYPES.SELF }
     ]
   },
   {
     text: "6. ถ้าให้เลือกวิชาเลือกเสรี 1 วิชา คุณจะเลือกเรียนอะไร",
     answers: [
-      { text: "การเขียน / วรรณกรรม", type: TYPES.LANGUAGE },
-      { text: "วิทยาศาสตร์ / โปรแกรมมิ่ง", type: TYPES.LOGIC },
-      { text: "ศิลปะ / ออกแบบ / ถ่ายภาพ", type: TYPES.VISUAL },
-      { text: "พลศึกษา / การแสดง / งานช่าง", type: TYPES.BODY },
       { text: "ดนตรี / การขับร้อง", type: TYPES.MUSIC },
-      { text: "จิตวิทยา / การสื่อสาร", type: TYPES.SOCIAL },
+      { text: "การเขียน / วรรณกรรม", type: TYPES.LANGUAGE },
+      { text: "เกษตร / ชีววิทยา / ดาราศาสตร์", type: TYPES.NATURE },
+      { text: "ศิลปะ / ออกแบบ / ถ่ายภาพ", type: TYPES.VISUAL },
+      { text: "วิทยาศาสตร์ / โปรแกรมมิ่ง", type: TYPES.LOGIC },
       { text: "ปรัชญา / พัฒนาตนเอง", type: TYPES.SELF },
-      { text: "เกษตร / ชีววิทยา / ดาราศาสตร์", type: TYPES.NATURE }
+      { text: "จิตวิทยา / การสื่อสาร", type: TYPES.SOCIAL },
+      { text: "พลศึกษา / การแสดง / งานช่าง", type: TYPES.BODY }
     ]
   },
   {
     text: "7. คุณชอบบรรยากาศห้องเรียนหรือที่ทำงานแบบไหน",
     answers: [
-      { text: "มีหนังสือและป้ายนิเทศความรู้", type: TYPES.LANGUAGE },
-      { text: "เป็นระเบียบ มีอุปกรณ์ทันสมัย", type: TYPES.LOGIC },
-      { text: "ตกแต่งสวยงาม มีสีสัน", type: TYPES.VISUAL },
       { text: "พื้นที่กว้าง เดินไปมาได้", type: TYPES.BODY },
-      { text: "มีเพลงเบาๆ หรือเสียงธรรมชาติ", type: TYPES.MUSIC },
-      { text: "จัดโต๊ะแบบกลุ่ม คุยง่าย", type: TYPES.SOCIAL },
+      { text: "มีหนังสือและป้ายนิเทศความรู้", type: TYPES.LANGUAGE },
+      { text: "ตกแต่งสวยงาม มีสีสัน", type: TYPES.VISUAL },
+      { text: "เป็นระเบียบ มีอุปกรณ์ทันสมัย", type: TYPES.LOGIC },
       { text: "มีมุมส่วนตัว เงียบสงบ", type: TYPES.SELF },
-      { text: "โปร่ง โล่ง มีต้นไม้", type: TYPES.NATURE }
+      { text: "มีเพลงเบาๆ หรือเสียงธรรมชาติ", type: TYPES.MUSIC },
+      { text: "โปร่ง โล่ง มีต้นไม้", type: TYPES.NATURE },
+      { text: "จัดโต๊ะแบบกลุ่ม คุยง่าย", type: TYPES.SOCIAL }
     ]
   },
   {
@@ -153,14 +166,14 @@ const questions = [
   {
     text: "9. ถ้าคุณต้องสอนเพื่อนทำสิ่งที่คุณถนัด คุณจะสอนอย่างไร",
     answers: [
-      { text: "เขียนขั้นตอนให้เพื่อนอ่าน", type: TYPES.LANGUAGE },
-      { text: "อธิบายหลักการและเหตุผล", type: TYPES.LOGIC },
       { text: "วาดรูปหรือทำให้ดู", type: TYPES.VISUAL },
-      { text: "จับมือทำหรือให้ลองเลย", type: TYPES.BODY },
       { text: "ใช้จังหวะหรือเสียงดนตรี", type: TYPES.MUSIC },
       { text: "นั่งคุยทำไปพร้อมกัน", type: TYPES.SOCIAL },
-      { text: "ให้เพื่อนค้นหาวิธีที่เหมาะกับตัวเอง", type: TYPES.SELF },
-      { text: "พาไปดูของจริง", type: TYPES.NATURE }
+      { text: "เขียนขั้นตอนให้เพื่อนอ่าน", type: TYPES.LANGUAGE },
+      { text: "พาไปดูของจริง", type: TYPES.NATURE },
+      { text: "อธิบายหลักการและเหตุผล", type: TYPES.LOGIC },
+      { text: "จับมือทำหรือให้ลองเลย", type: TYPES.BODY },
+      { text: "ให้เพื่อนค้นหาวิธีที่เหมาะกับตัวเอง", type: TYPES.SELF }
     ]
   }
 ];
@@ -198,26 +211,81 @@ function selectAnswer(type) {
   }
 }
 
+let chartInstance = null;
+
 function showResult() {
   questionBox.classList.add("hidden");
   resultBox.classList.remove("hidden");
 
-  const sorted = Object.entries(scores)
-    .sort((a, b) => b[1] - a[1]);
-
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   const topType = sorted[0][0];
-
-  const scoreBreakdown = sorted
-  .map(([type, score]) => `${type}: ${score}`)
-  .join("<br>");
-
   const description = DESCRIPTIONS[topType];
 
   resultEl.innerHTML = `
-    <strong>บุคลิกภาพเด่นของคุณคือ:</strong><br>
-    <span style="font-size: 1.2em"><h3>${description.title}</h3>
-    <p>${description.text}</p></span> 
-  `+ `<hr>${scoreBreakdown}`;
+    <h3>${description.title}</h3>
+    <p>${description.text}</p>
+    <h4>การกระจายคะแนน</h4>
+  `;
+
+  renderChart(sorted);
+}
+
+function renderChart() {
+const ctx = document.getElementById("resultChart").getContext("2d");
+  const totalQuestions = questions.length; // This is 9 in your case
+
+  if (chartInstance) {
+    chartInstance.destroy();
+  }
+
+  const labels = Object.values(TYPES);
+  const dataPoints = labels.map(label => scores[label] || 0);
+
+  chartInstance = new Chart(ctx, {
+    type: "polarArea",
+    data: {
+      labels: labels,
+      datasets: [{
+        data: dataPoints,
+        backgroundColor: CHART_COLORS,
+        borderColor: "#fff",
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: {
+        padding: 50 // Increased padding for the "%" text
+      },
+      scales: {
+        r: {
+          grid: { display: true },
+          ticks: { display: false },
+          pointLabels: {
+            display: true,
+            centerPointLabels: true,
+            font: {
+              size: 12,
+              weight: 'bold'
+            },
+            color: '#333',
+            // --- PERCENTAGE CALCULATION START ---
+            callback: function(label, index) {
+              const score = dataPoints[index];
+              const percentage = Math.round((score / totalQuestions) * 100);
+              return [label, percentage + "%"]; 
+            }
+            // --- PERCENTAGE CALCULATION END ---
+          }
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        datalabels: { display: false }
+      }
+    }
+  });
 }
 
 function restartQuiz() {
