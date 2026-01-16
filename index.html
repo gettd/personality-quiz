@@ -7,29 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="quiz-container">
-    <h1>แบบทดสอบพหุปัญญา 8 ด้าน</h1>
-    <h2>การผจญภัยในค่ายลูกเสือ</h2>
+  <div class="app">
+    <div class="quiz-container">
+      <h1>แบบทดสอบพหุปัญญา 8 ด้าน</h1>
+      <h2>การผจญภัยในค่ายลูกเสือ</h2>
 
-    <div id="intro-box">
-      <p>
-        คุณและเพื่อนๆ ได้รับเลือกให้เข้าร่วมค่ายลูกเสือพิเศษ "ผจญภัยสู่ยอดเขา" 3 วัน 2 คืน ในป่าใกล้ภูเขาลึกลับ ตลอดการเดินทางจะมีภารกิจและความท้าทายมากมายรอคุณอยู่ ถ้าพร้อมแล้ว มาเริ่มการผจญภัยกันเลย! 
-      </p>
+      <div id="intro-box">
+        <p>
+          คุณและเพื่อนๆ ได้รับเลือกให้เข้าร่วมค่ายลูกเสือพิเศษ "ผจญภัยสู่ยอดเขา" 3 วัน 2 คืน ในป่าใกล้ภูเขาลึกลับ ตลอดการเดินทางจะมีภารกิจและความท้าทายมากมายรอคุณอยู่ ถ้าพร้อมแล้ว มาเริ่มการผจญภัยกันเลย! 
+        </p>
 
-      <button onclick="startQuiz()">เริ่มทำแบบทดสอบ</button>
-    </div>
+        <button onclick="startQuiz()">เริ่มทำแบบทดสอบ</button>
+      </div>
 
-    <div id="question-box" class="hidden">
-      <h4 id="question"></h4>
-      <div id="answers"></div>
-    </div>
-
-    <div id="result-box" class="hidden">
-        <p id="result"></p>
-        <div style="position: relative; margin: auto; height:500px; width:500px;">
-            <canvas id="resultChart"></canvas>
+      <div id="question-box" class="hidden">
+        <div class="image-container">
+            <img id="question-image" src="" alt="Situation Image" style="width: 100%; max-width: 600px;">
         </div>
-        <button onclick="restartQuiz()">เริ่มใหม่</button>
+        <h4 id="question-title"></h4>
+        <p id="question-body"></p>
+        <div id="answers"></div>
+      </div>
+
+      <div id="result-box" class="hidden">
+          <p id="result"></p>
+          <div style="position: relative; margin: auto; height:500px; width:500px;">
+              <canvas id="resultChart"></canvas>
+          </div>
+          <button onclick="restartQuiz()">เริ่มใหม่</button>
+      </div>
     </div>
   </div>
 
