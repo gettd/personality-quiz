@@ -608,7 +608,7 @@ function preloadImages() {
     questions.forEach((q) => {
         if (q.image) {
             const img = new Image();
-            img.src = q.image; // This forces the browser to download it now
+            img.src = q.image;
         }
     });
 }
