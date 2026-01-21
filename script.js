@@ -469,6 +469,9 @@ const questions = [
 let currentQuestion = 0;
 let scores = {};
 
+let currentIntro = 0;
+let playerName,playerAcademicYear,playerId = "";
+
 const questionTitleEl = document.getElementById("question-title");
 const questionBodyEl = document.getElementById("question-body");
 const questionImgEl = document.getElementById("question-image");
@@ -476,10 +479,30 @@ const answersEl = document.getElementById("answers");
 const resultBox = document.getElementById("result-box");
 const resultEl = document.getElementById("result");
 const questionBox = document.getElementById("question-box");
-const introBox = document.getElementById("intro-box");
+const introPages = document.querySelectorAll(".intro-page");
+
+
+function showIntroPage(index) {
+  introPages.forEach(page => page.classList.remove("active"));
+  introPages[index].classList.add("active");
+}
 
 function startQuiz() {
-  introBox.classList.add("hidden");
+  const playerNameInput = document.getElementById("playerName").value.trim();
+  const playerAcademicYearInput = document.getElementById("playerAcademicYear").value.trim();
+  const playerIdInput = document.getElementById("playerId").value.trim();
+
+  if (playerNameInput === "" || playerAcademicYearInput==="" || playerIdInput==="") {
+    alert("ช่วยกรอกข้อมูลให้ครบก่อนเริ่มผจญภัยด้วยครับ");
+    return;
+  }
+
+  // Temp variables, can be used later
+  playerName = playerNameInput;
+  playerAcademicYear = playerAcademicYearInput;
+  playerId = playerIdInput;
+
+  document.querySelector(".intro-container").classList.add("hidden");
   questionBox.classList.remove("hidden");
   showQuestion();
 }
@@ -602,8 +625,8 @@ function restartQuiz() {
   currentQuestion = 0;
   scores = {};
   resultBox.classList.add("hidden");
-  introBox.classList.remove("hidden");
-  //questionBox.classList.remove("hidden");
+  //introBox.classList.remove("hidden");
+  questionBox.classList.remove("hidden");
   showQuestion();
 }
 
@@ -617,4 +640,8 @@ function preloadImages() {
 }
 
 preloadImages();
+
+showIntroPage(0);
+document.getElementById("next1").onclick = () => showIntroPage(1);
+document.getElementById("next2").onclick = () => showIntroPage(2);
 //showQuestion();
