@@ -489,6 +489,9 @@ const resultBox = document.getElementById("result-box");
 const resultEl = document.getElementById("result");
 const questionBox = document.getElementById("question-box");
 const introPages = document.querySelectorAll(".intro-page");
+const music = document.getElementById("bg-music");
+
+music.volume = 0.2; 
 
 function checkAndShowSectionIntro() {
   if (sectionBreaks[currentQuestion] && !showingSectionIntro) {
@@ -516,8 +519,10 @@ function continueFromSection() {
 }
 
 
-
 function showIntroPage(index) {
+  if(index==1){
+    document.getElementById("bg-music").play();
+  }
   introPages.forEach(page => page.classList.remove("active"));
   introPages[index].classList.add("active");
 }
@@ -674,6 +679,7 @@ function restartQuiz() {
 }
 
 function preloadImages() {
+  
     questions.forEach((q) => {
         if (q.image) {
             const img = new Image();
@@ -682,9 +688,11 @@ function preloadImages() {
     });
 }
 
+
 preloadImages();
 
 showIntroPage(0);
 document.getElementById("next1").onclick = () => showIntroPage(1);
 document.getElementById("next2").onclick = () => showIntroPage(2);
 //showQuestion();
+
