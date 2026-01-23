@@ -152,15 +152,17 @@ p {
 }
 
 .intro-container,
+.section-container,
 #quiz-container {
   margin: auto;
 }
 
 .intro-page {
-  display: none; /* hidden by default */
+  display: none;
 }
 
-.intro-page.active{
+.intro-page.active,
+.section-page.active{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -192,12 +194,28 @@ p {
   margin-top: 10px;
 }
 
+.section-actions {
+  display: flex;
+  justify-content: top;
+  margin-top: 10px;
+}
+
 .intro-input {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 150px;
 }
+
+.section-page {
+  display: none;
+}
+.section-page.active {
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+}
+
 
 #intro1 {
   background-image: url("assets/intro1.png");
@@ -209,4 +227,16 @@ p {
 
 #intro3 {
   background-image: url("assets/intro3.png");
+}
+
+#section-1 {
+  background-image: url("assets/sec1Intro.png");
+}
+
+#section-2 {
+  background-image: url("assets/sec2Intro.png");
+}
+
+#section-3 {
+  background-image: url("assets/sec3Intro.png");
 }

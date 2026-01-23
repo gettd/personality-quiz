@@ -1,5 +1,12 @@
 Chart.register(ChartDataLabels);
 
+const sectionBreaks = {
+  0: 1,// before question index 0 ->section 1
+  4: 2,
+  12: 3
+};
+
+
 const TYPES = {
   LANGUAGE: "ภาษา",
   LOGIC: "ตรรกะ",
@@ -469,6 +476,8 @@ const questions = [
 let currentQuestion = 0;
 let scores = {};
 
+let showingSectionIntro = false;
+
 let currentIntro = 0;
 let playerName,playerAcademicYear,playerId = "";
 
@@ -480,6 +489,32 @@ const resultBox = document.getElementById("result-box");
 const resultEl = document.getElementById("result");
 const questionBox = document.getElementById("question-box");
 const introPages = document.querySelectorAll(".intro-page");
+
+function checkAndShowSectionIntro() {
+  if (sectionBreaks[currentQuestion] && !showingSectionIntro) {
+    showingSectionIntro = true;
+    showSectionIntro(sectionBreaks[currentQuestion]);
+    return true;
+  }
+  return false;
+}
+
+function showSectionIntro(sectionNumber) {
+  questionBox.classList.add("hidden");
+  document.querySelectorAll(".section-page").forEach(p => p.classList.remove("active"));
+
+  const sectionPage = document.getElementById(`section-${sectionNumber}`);
+  sectionPage.classList.add("active");
+}
+
+function continueFromSection() {
+  document.querySelectorAll(".section-page").forEach(p => p.classList.remove("active"));
+  questionBox.classList.remove("hidden");
+  
+  showingSectionIntro = false;
+  showQuestion();
+}
+
 
 
 function showIntroPage(index) {
@@ -504,7 +539,11 @@ function startQuiz() {
 
   document.querySelector(".intro-container").classList.add("hidden");
   questionBox.classList.remove("hidden");
-  showQuestion();
+
+  if (!checkAndShowSectionIntro()) { //function return true if showing section intro
+    showQuestion();
+  }
+
 }
 
 function showQuestion() {
@@ -531,7 +570,9 @@ function selectAnswer(type) {
   currentQuestion++;
 
   if (currentQuestion < questions.length) {
-    showQuestion();
+    if (!checkAndShowSectionIntro()) { //function return true if showing section intro
+      showQuestion();
+    }
   } else {
     showResult();
   }
@@ -627,7 +668,9 @@ function restartQuiz() {
   resultBox.classList.add("hidden");
   //introBox.classList.remove("hidden");
   questionBox.classList.remove("hidden");
-  showQuestion();
+  if (!checkAndShowSectionIntro()) { //function return true if showing section intro
+    showQuestion();
+  }
 }
 
 function preloadImages() {
