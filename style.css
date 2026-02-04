@@ -58,6 +58,7 @@ button {
   transform: translate(-50%, -50%);
 }
 
+#result-elements,
 #question-elements{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -74,6 +75,7 @@ button {
   }
 }
 
+#result-box,
 #question-box{
   background-image: url("assets/quizBg.png");
   background-size: cover;
@@ -96,9 +98,9 @@ button {
 
 #resultChart {
   width: 100% !important;
-  max-width: 600px;
+  max-width: 500px;
   height: auto !important;
-  margin: 20px auto;
+  margin: 2px auto;
   display: block;
 }
 
@@ -131,7 +133,8 @@ p {
   padding: 0;
   cursor: pointer;
   display: block;
-
+  margin: 10px auto;
+  width: 500px;
   transition: transform 0.15s ease, filter 0.15s ease; 
 }
 
@@ -188,13 +191,7 @@ p {
   align-items: center;
 }
 
-.intro-actions {
-  display: flex;
-  justify-content: top;
-  margin-top: 10px;
-}
-
-.section-actions {
+.btn-actions {
   display: flex;
   justify-content: top;
   margin-top: 10px;

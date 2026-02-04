@@ -13,14 +13,14 @@
 
         <div class="intro-page active" id="intro1">
           <div class="intro-content"></div>
-          <button class="image-btn intro-actions">
+          <button class="image-btn btn-actions">
               <img src="assets/nextBtn.png" alt="Next" id="next1">
           </button>
         </div>
 
         <div class="intro-page" id="intro2">
           <div class="intro-content"></div>
-          <button class="image-btn intro-actions">
+          <button class="image-btn btn-actions">
             <img src="assets/nextBtn.png" alt="Next" id="next2">
           </button>
         </div>
@@ -31,7 +31,7 @@
             <input type="text" id="playerAcademicYear" placeholder="ชั้น"/>
             <input type="text" id="playerId" placeholder="เลขที่"/>
           </div>
-          <button class="image-btn intro-actions" onclick="startQuiz()">
+          <button class="image-btn btn-actions" onclick="startQuiz()">
             <img src="assets/startBtn.png" alt="Start Quiz">
           </button>
         </div>
@@ -41,21 +41,21 @@
       <div class="section-container">
         <div id="section-1" class="section-page">
           <div class="intro-content"></div>
-          <button class="image-btn section-actions" onclick="continueFromSection()">
+          <button class="image-btn btn-actions" onclick="continueFromSection()">
                 <img src="assets/nextBtn.png" alt="Next">
           </button>
         </div>
 
         <div id="section-2" class="section-page">
           <div class="intro-content"></div>
-          <button class="image-btn section-actions" onclick="continueFromSection()">
+          <button class="image-btn btn-actions" onclick="continueFromSection()">
                 <img src="assets/nextBtn.png" alt="Next">
           </button>
         </div>
 
         <div id="section-3" class="section-page">
           <div class="intro-content"></div>
-          <button class="image-btn section-actions" onclick="continueFromSection()">
+          <button class="image-btn btn-actions" onclick="continueFromSection()">
                 <img src="assets/nextBtn.png" alt="Next">
           </button>
         </div>
@@ -75,11 +75,21 @@
       </div>
 
       <div id="result-box" class="hidden">
-          <p id="result"></p>
+        <div id="result-elements">
           <div>
+            <p id="result"></p>
+          </div>
+          <div>
+              <h3>การกระจายคะแนน</h3>
               <canvas id="resultChart"></canvas>
           </div>
-          <button onclick="restartQuiz()">เริ่มใหม่</button>
+          
+        </div>
+
+        <button class="image-btn btn-actions" onclick="restartQuiz()">
+                <img src="assets/restartBtn.png" alt="Next">
+        </button>
+
       </div>
     </div>
     <audio id="bg-music" loop>
