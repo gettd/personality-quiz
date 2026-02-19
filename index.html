@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eight Personality Quiz</title>
+  <title>Nine Personality Quiz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +11,14 @@
     <div class="quiz-container">
       <div class="intro-container">
 
-        <div class="intro-page active" id="intro1">
+        <div class="intro-page active" id="intro0">
+          <div class="intro-content"></div>
+          <button class="image-btn btn-actions">
+              <img src="assets/nextBtn.png" alt="Next" id="next0">
+          </button>
+        </div>
+
+        <div class="intro-page" id="intro1">
           <div class="intro-content"></div>
           <button class="image-btn btn-actions">
               <img src="assets/nextBtn.png" alt="Next" id="next1">
@@ -67,7 +74,7 @@
           <div class="image-container">
               <img id="question-image" src="" alt="Situation Image" style="width: 100%; max-width: 600px;">
               
-              <h3 id="question-body"></h3>
+              <p id="question-body"></p>
           </div>
           
           <div id="answers"></div>

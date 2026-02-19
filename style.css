@@ -34,6 +34,7 @@ h1{
   padding: 12px;
   font-size: 16px;
   cursor: pointer;
+  font-size: large;
 }
 
 button {
@@ -94,6 +95,8 @@ button {
   background-repeat: no-repeat;
   background-color: rgba(255, 255, 255, 0.5);
   background-blend-mode: overlay;
+  text-indent: 60px;
+  font-size: xx-large;
 }
 
 #resultChart {
@@ -174,7 +177,7 @@ p {
   flex-direction: column;
 
   min-width: 100vh;
-  min-height: 75vh;
+  min-height: 90vh;
   padding: 20px;
   border-radius: 12px;
 }
@@ -213,6 +216,9 @@ p {
   min-height: 75vh;
 }
 
+#intro0 {
+  background-image: url("assets/intro0.png");
+}
 
 #intro1 {
   background-image: url("assets/intro1.png");
